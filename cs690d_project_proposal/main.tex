@@ -9,19 +9,17 @@
 
 \aclfinalcopy 
 
-\title{Your proposed project title here}
+\title{Deep NLP for Author Profiling: Bot and Gender Detection}
 
-\author{First Author \\
-  {\tt email@domain} \\\And
-  Second Author \\
-  {\tt email@domain} \\\And
-  Third Author \\
-  {\tt email@domain} \\\And
-  Fourth Author \\
+\author{Christopher Watson \\
+  {\tt chrwatson@cs.umass.edu} \\\And
+  Emre Eryigit \\
+  {\tt eeryigit@umass.edu} \\\And
+  Forsad Al Hossain\\
   {\tt email@domain} \\}
   
 % \setlength\textwidth{16.0cm}
-\date{}
+\date{3/1/2019}
 
 \begin{document}
 \maketitle
@@ -52,32 +50,47 @@ A baseline algorithm is one that is very simple and trivial to implement. For ex
 \noindent\textit{For MT:} it could be a basic neural model (e.g., LSTM-LSTM), a non-neural phrase-based MT system, or something else. Be specific! 
 
 \subsection{Milestones \& Schedule}
-Divide your project into subtasks and estimate how much time each will take. If your group plans to divide subtasks amongst itself, also write who will be responsible for each milestone. If you plan to work on everything together, please say so here. Definitely budget some time for writing the progress report and final report, as well as performing an in-depth analysis of any models you build and/or data you collect. Sample schedule below:
+ Project Schedule:
 \begin{enumerate}
     \item Acquire and preprocess data (1 week)
-    \item Build models for task (3 weeks)
-    \item Write progress report! (due Apr 1)
+    \item Generate word embeddings(1 week)
+    \item Train LSTM w/ attention model(1 weeks)
+    \item Write progress report! (1 week) (due Apr 1)
     \item Analyze the output of the model, do an error analysis (2 weeks)
     \item Work on final report and presentation (2 weeks)
 \end{enumerate}
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.5\textwidth]{figs/sentence.png}
-    \caption{Please feel free to include figures! If you want your figure to span both columns, use \emph{figure*} instead of \emph{figure}.}
-    \label{fig:example}
-\end{figure}
 
 \section{Data}
+We are using the PAN @ CLEF 2019 data set for Bots and Gender profiling. The corpus contains a total of 412,000 tweets. The data contains 4120 unique twitter users. Each user has a separate XML file containing 100 tweets.
+The organizers have extracted the textual data from the tweets, but have not done any other pre-processing. All text is in raw form. This means some data cleaning will need to be performed before it is fed to the model. 
+The ground truth data is given in a separate file, truth.txt. the format can be seen in Figure 2. Each line contains the AuthorID, human/bot, and male/female/bot fields.
 
-\textit{For MT:}
-Download the dataset (available on Piazza in the Resources section) and compute some basic statistics about it that you think will help inform your model design. Some obvious suggestions: number of sentence pairs, average number of tokens per sentence per language, size of vocab in both languages 
 
-\noindent\emph{For ``choose your own project":} 
-What text data do you plan to use in your project? Where will you get it from? Will you be annotating text yourselves? Convince us that it is available for you, and that you can easily get it, and that it is appropriate for the task and research questions you care about.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/xml.png}
+    \caption{XML file format.}
+    \label{fig:data_example}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/truth.PNG}
+    \caption{Format of ground truth file, truth.txt.}
+    \label{fig:data_example}
+\end{figure}
+
 
 \section{Tools}
-What existing libraries or toolkits are you going to use? Some questions to think about: will you be doing any preprocessing of your data such as tokenization or parsing? Will you be training logistic regression models? Will you be using deep learning libraries (if not, you need to justify why)? Will you need to use any services for GPUs?\footnote{As we said in class, we strongly suggest \url{https://colab.research.google.com}!} Do you need to use crowdsourcing?
+
+The tweets from the PAN dataset are in raw form. This means that we will need to clean the data. Common data cleaning in previous years has included the removal or normalization of Twitter-specific elements such as URLs, user mentions, and hashtags. We may also lowercase the text, expand contractions, and remove punctuation, character flooding, and stopwords.
+
+We will parse the words and using word2vec for our pre-trained word embeddings. 
+
+Our deep learnig model will be built using the Keras framework with a Tensorflow backend. We will train our models on free resources provided by Google Colab. 
+
 
 \bibliographystyle{apalike}
 \footnotesize
