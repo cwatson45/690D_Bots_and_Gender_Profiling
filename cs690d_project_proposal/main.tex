@@ -45,9 +45,7 @@ How do you plan to solve the problem you chose? How will you approach it differe
 \noindent\textit{For ``choose your own project'':} remember that this project should take $\sim 2$ months of work! 
 
 \paragraph{What baseline algorithms will you use?}
-A baseline algorithm is one that is very simple and trivial to implement. For example, ``predict the most common class,'' or ``tag all capitalized words as names,'' or ``select the first sentence in the document''. Sometimes it can be difficult to get a fancy algorithm to beat a baseline. Always ask yourself, ``What's the simplest experiment I could do to (in)validate my hypothesis?'' Talented researchers have a knack for coming up with simple baselines.
-
-\noindent\textit{For MT:} it could be a basic neural model (e.g., LSTM-LSTM), a non-neural phrase-based MT system, or something else. Be specific! 
+Our baseline algorithms will be a bag of words, deep averaging network. We will compare this to more complex models like LSTM with attention.
 
 \subsection{Milestones \& Schedule}
  Project Schedule:
@@ -89,7 +87,7 @@ The tweets from the PAN dataset are in raw form. This means that we will need to
 
 We will parse the words and using word2vec for our pre-trained word embeddings. 
 
-Our deep learnig model will be built using the Keras framework with a Tensorflow backend. We will train our models on free resources provided by Google Colab. 
+Our deep learning model will be built using the Keras framework with a Tensorflow backend. We will train our models on free resources provided by Google Colab. 
 
 
 \bibliographystyle{apalike}
